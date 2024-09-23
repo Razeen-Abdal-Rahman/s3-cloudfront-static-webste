@@ -53,3 +53,30 @@ resource "aws_s3_bucket_website_configuration" "static_website" {
     }
   }
 }
+
+resource "aws_s3_object" "index" {
+  bucket    = aws_s3_bucket.static_website.id
+  key       = "index.html"
+  source    = "src/index.html"
+}
+
+resource "aws_s3_object" "error" {
+  bucket    = aws_s3_bucket.static_website.id
+  key       = "error.html"
+  source    = "src/error.html"
+}
+
+resource "aws_s3_bucket_policy" "static_website" {
+  bucket = aws_s3_bucket.static_website.id
+  policy = jsondecode({
+    "Version": "2012-10-17"
+    "Statement": [
+      {
+        "Effect" : "Allow",
+        "Principal" : "*",
+        "Action" : "s3:GetObject"
+        "Resource" : ""
+      }
+    ]
+  })
+}
