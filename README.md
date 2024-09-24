@@ -47,18 +47,18 @@ To run this project, you will need:
 
 ### Step 1: Clone the Repository
 
-First clone the repository to your local machine
+First clone the repository to your local machine.
 
 ### Step 2: Configure Terraform
 
-open `s3.tf` and change `bucket` to a globally unique name
-check `main.tf` and ensure the AWS `region` in the provider block is correct for your needs
+open `s3.tf` and change `bucket` to a globally unique name.
+check `main.tf` and ensure the AWS `region` in the provider block is correct for your needs.
 
 ### Step 3: Deploy Infrastructure
 
-run `terraform init` to initalise the terraform environment
-run `terraform plan` to ensure your AWS account is configured and review the plan ensuring you are happy with what will be deployed
-run `terraform apply` to create the S3 bucket, upload your website files, and set up cloudfront
+run `terraform init` to initalise the terraform environment.
+run `terraform plan` to ensure your AWS account is configured and review the plan ensuring you are happy with what will be deployed.
+run `terraform apply` to create the S3 bucket, upload your website files, and set up cloudfront.
 
 ### Step 4: Access the Website
 
@@ -66,5 +66,5 @@ Once the deployment is complete, Terraform will output the CloudFront URL. Visit
 
 ## Cleanup
 
-To prevent incuring any unnesseccary AWS costs, you can destroy the infrastructure when it is no longer needed using `terraform destroy`
+To prevent incuring any unnesseccary AWS costs, you can destroy the infrastructure when it is no longer needed using `terraform destroy`.
 *Note: this command will remove all resources that were created by terraform*
