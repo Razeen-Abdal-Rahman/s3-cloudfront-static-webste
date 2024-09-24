@@ -1,13 +1,13 @@
 //create and configure cloudfront distribution
 resource "aws_cloudfront_distribution" "static_website" {
   origin {
-    domain_name = aws_s3_bucket.static_website.website_endpoint
+    domain_name = aws_s3_bucket_website_configuration.static_website.id
     origin_id = "s3-${aws_s3_bucket.static_website.id}"
     custom_origin_config {
       http_port = 80
       https_port = 443
       origin_protocol_policy = "http_only"
-      origin_ssl_protocols = "TLSv1"
+      origin_ssl_protocols = ["TLSv1"]
     }
   }
   enabled = true
