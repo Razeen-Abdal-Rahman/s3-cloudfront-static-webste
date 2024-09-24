@@ -28,6 +28,8 @@ To run this project, you will need:
 
 - An **AWS account** with the necessary permissions to create S3 buckets, CloudFront distributions, and other resources.
 - **Terraform** installed on your local machine. You can download it from [here](https://www.terraform.io/downloads).
+- **AWS crednetials shared with Terraform.** This will allow you to run your terraform code in your AWS account.  
+  - See [this guide](https://banhawy.medium.com/3-ways-to-configure-terraform-to-use-your-aws-account-fb00a08ded5) you can also view [this article](https://hector-reyesaleman.medium.com/terraform-aws-provider-everything-you-need-to-know-about-multi-account-authentication-and-f2343a4afd4b) for more information.
 - Basic knowledge of AWS and Terraform.
 
 ## Project Structure
