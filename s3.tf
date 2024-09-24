@@ -53,15 +53,15 @@ resource "aws_s3_bucket_website_configuration" "static_website" {
 
 resource "aws_s3_bucket_policy" "static_website" {
   bucket = aws_s3_bucket.static_website.id
-  policy = jsondecode({
-    "Version": "2012-10-17"
-    "Statement": [
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
       {
-        "Effect" : "Allow",
-        "Principal" : "*",
-        "Action" : "s3:GetObject"
-        "Resource" : ""
-      }
+        Action    = "s3:GetObject"
+        Effect    = "Allow"
+        Resource  = "${aws_s3_bucket.static_website.arn}/*"
+        Principal = "*"
+      },
     ]
   })
 }
