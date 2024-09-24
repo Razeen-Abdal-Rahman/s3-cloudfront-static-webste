@@ -1,6 +1,6 @@
 //create s3 bucket and set permissions
 resource "aws_s3_bucket" "static_website" {
-  bucket = "my_static_website_bucket_198745"
+  bucket = "my-static-website-bucket-198745"
   tags = {
     "Name" = "Website Bucket"
   }
@@ -52,6 +52,7 @@ resource "aws_s3_bucket_website_configuration" "static_website" {
 }
 
 resource "aws_s3_bucket_policy" "static_website" {
+  depends_on = [ aws_s3_bucket_acl.static_website ]
   bucket = aws_s3_bucket.static_website.id
   policy = jsonencode({
     Version = "2012-10-17"
