@@ -27,7 +27,7 @@ resource "aws_s3_bucket_acl" "static_website" {
     aws_s3_bucket_public_access_block.static_website,
   ]
   bucket = aws_s3_bucket.static_website.id
-  acl = "public-read"
+  acl    = "public-read"
 }
 
 resource "aws_s3_bucket_website_configuration" "static_website" {
@@ -52,10 +52,10 @@ resource "aws_s3_bucket_website_configuration" "static_website" {
 }
 
 resource "aws_s3_bucket_policy" "static_website" {
-  depends_on = [ aws_s3_bucket_acl.static_website ]
-  bucket = aws_s3_bucket.static_website.id
-  policy = jsonencode({
-    Version = "2012-10-17"
+  depends_on  = [ aws_s3_bucket_acl.static_website ]
+  bucket      = aws_s3_bucket.static_website.id
+  policy      = jsonencode({
+    Version   = "2012-10-17"
     Statement = [
       {
         Action    = "s3:GetObject"
