@@ -24,5 +24,3 @@ jobs:
         run: terraform init -backend=false
       - name: Validate Terraform Code
         run: terraform validate
-      - name: Terraform Plan
-        run: terraform plan -out=tfplan
