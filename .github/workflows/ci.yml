@@ -1,0 +1,28 @@
+name: Terraform CI Pipeline
+
+on:
+  push:
+    branches: [master, add-ci]
+  pull_request:
+    branches: [master, add-ci]
+
+jobs:
+  terraform-tests:
+    name: Run Terraform Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v5
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.6.0
+      - name: Terraform Formatting
+        run: terraform fmt -check -recursive
+      - name: Initalise Terraform
+        run: terraform init -backend=false
+      - name: Validate Terraform Code
+        run: terraform validate
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
